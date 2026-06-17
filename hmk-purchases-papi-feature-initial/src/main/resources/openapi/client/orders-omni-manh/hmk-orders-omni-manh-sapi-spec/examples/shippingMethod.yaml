@@ -1,0 +1,4 @@
+ShippingMethod:
+  shipping_method_id: "1008"
+  shipping_processor_id: "0"
+  shipping_method_label: USPS First Class Package

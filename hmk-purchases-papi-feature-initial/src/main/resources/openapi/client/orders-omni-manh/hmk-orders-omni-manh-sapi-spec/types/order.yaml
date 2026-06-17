@@ -1,0 +1,90 @@
+# Order schema
+type: object
+properties:
+  orderNumber:
+    type: string
+    description: Order Number
+  orderDate:
+    type: string
+    description: Order date
+  FulfillmentStatus:
+    type: string
+    description: Fulfillment status
+  billTo:
+    type: object
+    properties:
+      phone:
+        type: string
+      email:
+        type: string
+      address:
+        type: object
+        properties:
+          attention:
+            type: string
+          address:
+            type: string
+          city:
+            type: string
+          postalCode:
+            type: string
+          countryRegion:
+            type: string
+          country:
+            type: string
+  items:
+    type: array
+    items:
+      type: object
+      properties:
+        itemId:
+          type: string
+        description:
+          type: string
+        pickupStatus:
+          type: string
+        cancelled:
+          type: boolean
+        quantityOrdered:
+          type: integer
+          format: int32
+        quantityFulfilled:
+          type: integer
+          format: int32
+        quantityCancelled:
+          type: integer
+          format: int32
+        earliestDeliveryDate:
+          type: string
+        latestDeliveryDate:
+          type: string
+        deliveryMethod:
+          type: string
+        storeID:
+          type: string
+        storeName:
+          type: string
+        storePhone:
+          type: string
+        pickConfirmDate:
+          type: string
+        pickupTime:
+          type: string
+        shipments:
+          type: array
+          items:
+            type: object
+            properties:
+              shipmentId:
+                type: string
+              shippedDate:
+                type: string
+              trackingNumber:
+                type: string
+              trackURL:
+                type: string
+              shippingMethodLabel:
+                type: string
+              quantity:
+                type: integer
+                format: int32

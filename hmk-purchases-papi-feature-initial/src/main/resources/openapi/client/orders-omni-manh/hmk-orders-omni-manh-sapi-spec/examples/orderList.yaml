@@ -1,0 +1,25 @@
+orderList:
+  count: 2
+  data:
+    - id: CC10132
+      checkout_date: 2022-05-11T15:20:24.917
+      bill_attention: SUNIL GURU
+      bill_address: "7921 Carter St  "
+      bill_city: Overland Park
+      bill_postal_code: "66204"
+      bill_phone: "8165452454"
+      bill_email: ctesting500@gmail.com
+      bill_country_region_cd: KS
+      bill_country_cd: US
+      status: Released
+    - id: CC10131
+      checkout_date: 2022-05-11T15:18:02.494
+      bill_attention: SUNIL GURU
+      bill_address: "7921 Carter St  "
+      bill_city: Overland Park
+      bill_postal_code: "66204"
+      bill_phone: "8165452454"
+      bill_email: ctesting500@gmail.com
+      bill_country_region_cd: KS
+      bill_country_cd: US
+      status: Partially Fulfilled

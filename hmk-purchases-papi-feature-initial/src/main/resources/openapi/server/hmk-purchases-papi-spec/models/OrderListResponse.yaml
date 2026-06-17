@@ -1,0 +1,10 @@
+type: object
+required:
+  - orders
+properties:
+  orders:
+    title: List of orders
+    description: List of orders
+    type: array
+    items:
+      $ref: "./OrderSearchResponse.yaml"

@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: hmk-store-info-sys-api
+  description: This API is a system API to get the information of store
+  version: v1
+paths:
+  /stores/{store_id}:
+    get:
+      operationId: getStoreInfo
+      description: Retrieve information about store of given store id.
+      parameters:
+        -
+          name: store_id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                getStoreInfoResponseExample:
+                  $ref: "./examples/getStoreInfoResponseExample.json"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "./types/ErrorResponse.yaml"
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "./types/ErrorResponse.yaml"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "./types/ErrorResponse.yaml"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "./types/ErrorResponse.yaml"

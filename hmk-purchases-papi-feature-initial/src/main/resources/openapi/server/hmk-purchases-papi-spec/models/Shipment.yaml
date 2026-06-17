@@ -1,0 +1,39 @@
+title: Shipment
+type: object
+required:
+  - items
+properties:
+  items:
+    title: Items
+    description: Items list for the shipment
+    type: array
+    items:
+      $ref: "./Item.yaml"
+  anticipated_arrival_date:
+    title: Anticipated Arrival Date
+    description: Item's anticipated_arrival_date if it is shipped
+    type: string
+  actual_delivery_date:
+    title: Actual Delivery Date
+    description: Item's actual_delivery_date if it is delivered
+    type: string
+  status:
+    title: Status of Shipment
+    description: Shipment's current status as per carrier
+    type: string
+  shipped_date:
+    title: Shipped Date
+    description: Shipped Date of Item's Shipment
+    type: string
+  carrier:
+    title: Carrier
+    description: Carrier info of Item's Shipment
+    type: string
+  tracking_number:
+    title: Tracking Number
+    description: Track ID of Item's Shipment
+    type: string
+  track_url:
+    title: Track Url
+    description: Track URL of Item's Shipment
+    type: string

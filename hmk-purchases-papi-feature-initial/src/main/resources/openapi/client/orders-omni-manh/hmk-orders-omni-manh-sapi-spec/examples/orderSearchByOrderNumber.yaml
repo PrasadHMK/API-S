@@ -1,0 +1,43 @@
+orderSearchByOrderNumber:
+  orderNumber: WEB-00472217
+  orderDate: 2022-05-04T22:25:07.615
+  FulfillmentStatus: Partially Fulfilled
+  billTo:
+    phone: "8162830459"
+    email: margarita.carracedo@globant.com
+    address:
+      attention: Michel Down
+      address: "2501 Holmes St  "
+      city: Kansas City
+      postalCode: "64108"
+      countryRegion: MO
+      country: US
+  items:
+    - itemId: 1BBY4720
+      description: Lullaby Lamb Musical Stuffed Animal, 8.25"
+      pickupStatus: Processing
+      cancelled: false
+      quantityOrdered: 10.0
+      quantityFulfilled: 2.0
+      quantityCancelled: 0
+      earliestDeliveryDate: 2022-05-09
+      latestDeliveryDate: 2022-05-12
+      deliveryMethod: ShipToAddress
+      storeID: 043999
+      storeName: Brandy's Hallmark Shop-Curbside Pick Up Available
+      storePhone: 815-623-3001
+      pickConfirmDate: 2022-04-21
+      pickupTime: null
+      shipments:
+        - shipmentId: WEB-004722174
+          shippedDate: 2022-05-04T23:00:02.556
+          trackingNumber: "794633482609"
+          trackURL: https://www.fedex.com/fedextrack/?tracknumbers=794633482609&cntry_code=us&language=english
+          shippingMethodLabel: FedEx Home
+          quantity: 2.0
+        - shipmentId: WEB-004722175
+          shippedDate: 2022-05-04T23:00:02.63
+          trackingNumber: "794633483010"
+          trackURL: https://www.fedex.com/fedextrack/?tracknumbers=794633483010&cntry_code=us&language=english
+          shippingMethodLabel: FedEx Home
+          quantity: 1.0

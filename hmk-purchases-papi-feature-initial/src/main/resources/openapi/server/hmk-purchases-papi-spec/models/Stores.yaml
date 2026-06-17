@@ -1,0 +1,68 @@
+title: Stores List
+type: object
+required:
+  - ItemList
+  - store_info
+  - store_address
+  - store_phone
+properties:
+  ItemList:
+    title: All Item List
+    type: object
+    properties:
+      pickedup_items:
+        type: object
+        properties:
+          items:
+            title: Picked Up Items Info
+            description: Picked Up Items Info
+            type: array
+            items:
+              $ref: "./StoreItems.yaml"
+      processing_items:
+        type: object
+        properties:
+          items:
+            title: Processing Items Info
+            description: Processing Items Info
+            type: array
+            items:
+              $ref: "./StoreItems.yaml"
+      cancelled_items:
+        type: object
+        properties:
+          items:
+            title: Cancelled Items Info
+            description: Cancelled Items Info
+            type: array
+            items:
+              $ref: "./StoreItems.yaml"
+      ready_for_pickup_items:
+        type: object
+        properties:
+          items:
+            title: Ready for Pick Up Items Info
+            description: Ready for Pick Up Items Info
+            type: array
+            items:
+              $ref: "./StoreItems.yaml"
+  promised_date:
+    title: Promised Date
+    description: Promised Date for Processing Items if exists
+    type: string
+  promised_time:
+    title: Promised Time
+    description: Promised Time for Processing Items if exists
+    type: string
+  store_info:
+    title: Store Info
+    description: Store Name
+    type: string
+  store_address:
+    title: Store Address
+    description: Store Address
+    type: string
+  store_phone:
+    title: Store Phone Number
+    description: Store Phone Number
+    type: string

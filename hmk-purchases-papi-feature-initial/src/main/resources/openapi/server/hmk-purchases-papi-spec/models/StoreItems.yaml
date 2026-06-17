@@ -1,0 +1,13 @@
+type: object
+required:
+  - description
+  - quantity
+properties:
+  description:
+    title: Description
+    description: Item description
+    type: string
+  quantity:
+    title: Quantity
+    description: Item's Quantity
+    type: number

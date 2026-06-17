@@ -1,0 +1,22 @@
+type: object
+required:
+  - error
+  - payload
+properties:
+  error:
+    type: string
+  payload:
+    type: object
+x-amf-examples:
+  BadRequestErrorExample:
+    error: Bad Request
+    payload: error message
+  AuthenticationErrorExample:
+    error: Authentication Error
+    payload: error message
+  NotFoundErrorExample:
+    error: Not Found
+    payload: error message
+  InternalErrorExample:
+    error: Internal Error
+    payload: Formatted Payload

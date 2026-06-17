@@ -1,0 +1,12 @@
+# Shipping Method schema
+type: object
+properties:
+  shipping_method_id:
+    type: string
+    description: Shipping Method Id
+  shipping_processor_id:
+    type: string
+    description: Shipping Processor Id
+  shipping_method_label:
+    type: string
+    description: Shipping Method Label

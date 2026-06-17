@@ -1,0 +1,21 @@
+type: object
+required:
+  - description
+  - quantity
+properties:
+  description:
+    title: Description
+    description: Item description
+    type: string
+  quantity:
+    title: Quantity
+    description: Item's Quantity
+    type: number
+  earliest_delivery_date:
+    title: Earliest Delivery Date
+    description: Item's earliest_delivery_date if it is not shipped
+    type: string
+  latest_delivery_date:
+    title: Latest Delivery Date
+    description: Item's latest_delivery_date if it is not shipped
+    type: string

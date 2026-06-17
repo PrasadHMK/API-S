@@ -1,0 +1,97 @@
+﻿openapi: 3.0.0
+info:
+  title: hmk-purchases-prc-api
+  description: Process API for integration with Hallmark's SalesForce Order Center(only in v1) and MAO through Hallmark Orders Sys API
+  version: v2
+paths:
+  /orders/search:
+    get:
+      operationId: ordersSearch
+      description: Retrieves information about orders given the order number or phone number or email address.
+      parameters:
+        - name: orderNumber
+          in: query
+          description: Order number to search for
+          required: false
+          schema:
+            type: string
+          example: WEB-50453131
+        - name: phoneNumber
+          in: query
+          description: Phone number associated with the order
+          required: false
+          schema:
+            type: string
+          example: (816) 547-5259
+        - name: emailAddress
+          in: query
+          description: Email address associated with the order
+          required: false
+          schema:
+            type: string
+            format: email
+          example: shane.dark@hallmark.com
+      responses:
+        "200":
+          description: Successfully retrieved order information
+          content:
+            application/json:
+              schema:
+                $ref: "./models/OrderListResponse.yaml"
+              examples:
+                getOrderDetailByOrderNumber_MAO:
+                  $ref: "./examples/getOrderDetailByOrderNumber_MAO.json"
+                getOrderByEmailOrPhone:
+                  $ref: "./examples/getOrderByEmailOrPhone.json"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "./models/InternalError.yaml"
+              examples:
+                BadRequestError:
+                  $ref: "./examples/BadRequestErrorExample.json"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "./models/InternalError.yaml"
+              examples:
+                AuthenticationError:
+                  $ref: "./examples/AuthenticationErrorExample.json"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "./models/InternalError.yaml"
+              examples:
+                NotFoundError:
+                  $ref: "./examples/NotFoundErrorExample.json"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "./models/InternalError.yaml"
+              examples:
+                InternalError:
+                  $ref: "./examples/InternalErrorExample.json"
+components:
+  schemas:
+    OrderListResponse:
+      $ref: "./models/OrderListResponse.yaml"
+    OrderSearchResponse:
+      $ref: "./models/OrderSearchResponse.yaml"
+    InternalError:
+      $ref: "./models/InternalError.yaml"
+    ShipToAddressShipments:
+      $ref: "./models/ShipToAddressShipments.yaml"
+    Stores:
+      $ref: "./models/Stores.yaml"
+    Item:
+      $ref: "./models/Item.yaml"
+    StoreItems:
+      $ref: "./models/StoreItems.yaml"

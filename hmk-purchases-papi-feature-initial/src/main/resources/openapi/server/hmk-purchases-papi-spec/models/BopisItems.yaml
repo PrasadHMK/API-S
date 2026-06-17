@@ -1,0 +1,16 @@
+title: Buy Online Pick Up In Store Items
+type: object
+required:
+  - pickupStatus
+  - stores
+properties:
+  pickupStatus:
+    title: Pickup Status
+    description: Calculated PickUp Status of Store Items
+    type: string
+  stores:
+    title: Stores
+    description: Array of Stores Consisting the Order Items
+    type: array
+    items:
+      $ref: "./Stores.yaml"

@@ -1,0 +1,33 @@
+# Order List schema
+type: object
+properties:
+  count:
+    type: integer
+    description: Number of orders
+  data:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        checkout_date:
+          type: string
+        bill_attention:
+          type: string
+        bill_address:
+          type: string
+        bill_city:
+          type: string
+        bill_postal_code:
+          type: string
+        bill_phone:
+          type: string
+        bill_email:
+          type: string
+        bill_country_region_cd:
+          type: string
+        bill_country_cd:
+          type: string
+        status:
+          type: string

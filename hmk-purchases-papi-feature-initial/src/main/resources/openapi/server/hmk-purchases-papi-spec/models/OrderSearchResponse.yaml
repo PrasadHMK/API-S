@@ -1,0 +1,81 @@
+type: object
+required:
+  - orderNumber
+  - orderDate
+  - orderBillToPhone
+  - orderBillToEmail
+  - orderBillToAttention
+  - orderBillToAddress
+  - orderBillToCity
+  - orderBillToPostalCode
+  - orderBillToRegion
+  - orderBillToCountry
+properties:
+  orderNumber:
+    title: Order Number
+    description: Order Number
+    type: string
+  orderDate:
+    title: Order Date
+    description: Order Date
+    type: string
+  orderStatus:
+    title: Order Status
+    description: Order Status
+    type: string
+  orderBillToPhone:
+    title: Bill To Phone
+    description: Bill To Phone
+    type: string
+  orderBillToEmail:
+    title: Bill To Email Address
+    description: Bill TO Email Address
+    type: string
+  orderBillToAttention:
+    title: Bill To Attention
+    description: Bill To Attention
+    type: string
+  orderBillToAddress:
+    title: Bill To Address
+    description: Bill To Address
+    type: string
+  orderBillToCity:
+    title: Bill To City
+    description: Bill To City
+    type: string
+  orderBillToPostalCode:
+    title: Bill To Postal Code
+    description: Bill To Postal Code
+    type: string
+  orderBillToRegion:
+    title: Bill To Region
+    description: Bill To Region
+    type: string
+  orderBillToCountry:
+    title: Bill To Country
+    description: Bill To Country
+    type: string
+  shipToAddressShipments:
+    title: Shipments
+    description: List of shipments
+    type: array
+    items:
+      $ref: "./ShipToAddressShipments.yaml"
+  BOPISItems:
+    title: Buy Online Pick Up In Store Items
+    description: Buy Online Pick Up In Store Items Details
+    type: object
+    required:
+      - pickupStatus
+      - stores
+    properties:
+      pickupStatus:
+        title: Pickup Status
+        description: Calculated PickUp Status of Store Items
+        type: string
+      stores:
+        title: Stores
+        description: Array of Stores Consisting the Order Items
+        type: array
+        items:
+          $ref: "./Stores.yaml"

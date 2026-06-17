@@ -1,0 +1,11 @@
+type: object
+required:
+  - error
+  - payload
+properties:
+  error:
+    type: string
+  payload:
+    anyOf:
+      - type: object
+      - type: string

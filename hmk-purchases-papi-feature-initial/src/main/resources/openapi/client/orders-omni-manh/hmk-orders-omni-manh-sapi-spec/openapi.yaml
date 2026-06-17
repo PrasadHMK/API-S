@@ -1,0 +1,236 @@
+openapi: 3.0.0
+info:
+  title: hmk-orders-omni-manh-sapi
+  description: This API provides services to get order information from Sales Force Order Management system Or Manhattan
+  version: v1
+  
+components:
+  securitySchemes:
+    OAuth2ClientCredentials:
+     type: oauth2
+     flows:
+       clientCredentials:
+         tokenUrl: https://auth.example.com/oauth2/token
+         scopes:
+           read: Read access to data
+           write: Write access to data
+
+security:
+  - OAuth2ClientCredentials:
+      - read
+    
+paths:
+  /order/{orderNumber}:
+    get:
+      operationId: getOrderById
+      description: Retrieve information about an order given the order number
+      parameters:
+        -
+          name: orderNumber
+          description: Order Number
+          required: true
+          in: path
+          schema:
+            description: Order Number
+            type: string
+      responses:
+        "200":
+          description: "Order details retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: './types/order.yaml'
+              examples:
+                orderSearchByOrderNumber:
+                  $ref: './examples/orderSearchByOrderNumber.yaml'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Authentication denied.
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Resource Not Found.
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Internal ServerError
+        "503":
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Service Unavailable
+  /orderListEmail:
+    get:
+      operationId: getOrderListByEmail
+      description: Retrieves order history for a given email address
+      parameters:
+        -
+          name: emailAddress
+          description: Email Address
+          required: true
+          in: query
+          schema:
+            description: Email Address
+            type: string
+      responses:
+        "200":
+          description: "Order history retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: './types/orderList.yaml'
+              examples:
+                orderList:
+                  $ref: './examples/orderList.yaml'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Authentication denied.
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Resource Not Found.
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Internal ServerError
+        "503":
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Service Unavailable
+  /orderListPhone:
+    get:
+      operationId: getOrderListByPhone
+      description: Retrieves order history for a given phone number
+      parameters:
+        -
+          name: phoneNumber
+          description: Bill Phone Number
+          required: true
+          in: query
+          schema:
+            description: Bill Phone Number
+            type: string
+      responses:
+        "200":
+          description: "Order history retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: './types/orderList.yaml'
+              examples:
+                orderList:
+                  $ref: './examples/orderList.yaml'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Authentication denied.
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Resource Not Found.
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Internal ServerError
+        "503":
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Service Unavailable
+  /getShippingMethodLabel:
+    get:
+      operationId: getShippingMethodLabel
+      description: Retrieves shipping method label by given shipping method id
+      parameters:
+        -
+          name: shipping_method_id
+          description: Shipping Method Id to be searched
+          required: true
+          in: query
+          schema:
+            title: shipping_method_id
+            description: Shipping Method Id to be searched
+            type: string
+        -
+          name: shipping_processor_id
+          description: Shipping Processor Id to be searched
+          required: false
+          in: query
+          schema:
+            title: shipping_processor_id
+            description: Shipping Processor Id to be searched
+            type: string
+      responses:
+        "200":
+          description: "Shipping method label retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: './types/shippingMethod.yaml'
+              examples:
+                ShippingMethod:
+                  $ref: './examples/shippingMethod.yaml'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Authentication denied.
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Resource Not Found.
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Internal ServerError
+        "503":
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Service Unavailable
