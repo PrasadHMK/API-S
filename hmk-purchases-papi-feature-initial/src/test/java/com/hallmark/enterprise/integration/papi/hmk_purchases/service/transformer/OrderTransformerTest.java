@@ -226,6 +226,7 @@ class OrderTransformerTest {
         shipment.setShippingMethodLabel("UPS Ground");
         shipment.setShippedDate("2026-01-06");
         shipment.setTrackURL("https://ups.com/track/TRACK-123");
+        shipment.setDeliveryDate("2026-01-11T09:39:18");
         shipment.setQuantity(1);
 
         item.setShipments(Collections.singletonList(shipment));
@@ -242,7 +243,7 @@ class OrderTransformerTest {
         assertEquals("TRACK-123", orderDetails.getShipToAddressShipments().get(0).getTrackingNumber());
         assertEquals("https://ups.com/track/TRACK-123", orderDetails.getShipToAddressShipments().get(0).getTrackUrl());
         assertEquals("01-10-2026", orderDetails.getShipToAddressShipments().get(0).getAnticipatedArrivalDate());
-        assertEquals("Not Available", orderDetails.getShipToAddressShipments().get(0).getActualDeliveryDate());
+        assertEquals("01-11-2026", orderDetails.getShipToAddressShipments().get(0).getActualDeliveryDate());
         assertEquals("Shipped", orderDetails.getShipToAddressShipments().get(0).getStatus());
     }
 

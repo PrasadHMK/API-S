@@ -258,8 +258,8 @@ public class OrderTransformer {
             }
 
             shipment.setAnticipatedArrivalDate(getAnticipatedArrivalDate(matchedItems));
-            shipment.setActualDeliveryDate(getActualDeliveryDate(order, matchedItems));
-            shipment.setStatus(getShipmentStatus(order));
+            shipment.setActualDeliveryDate(formatDate(shipmentInfo.getDeliveryDate()));
+            shipment.setStatus(getShipmentStatus(order, shipmentInfo));
         }
 
         return shipment;
@@ -549,23 +549,15 @@ public class OrderTransformer {
                 .orElse(NOT_AVAILABLE);
     }
 
-    private String getActualDeliveryDate(Order order, List<OrderItemsInner> matchedItems) {
-        if (!isDelivered(order)) {
-            return NOT_AVAILABLE;
-        }
-
-        return matchedItems.stream()
-                .map(OrderItemsInner::getLatestDeliveryDate)
-                .filter(Objects::nonNull)
-                .map(this::formatDate)
-                .filter(date -> !NOT_AVAILABLE.equals(date))
-                .findFirst()
-                .orElse(NOT_AVAILABLE);
-    }
-
-    private String getShipmentStatus(Order order) {
+    private String getShipmentStatus(Order order, OrderItemsInnerShipmentsInner shipmentInfo) {
         if (isDelivered(order)) {
             return "Delivered";
+        }
+
+        // If the order payload already contains a concrete shipment segment, treat it as shipped.
+        // Cancelled and processing are handled in their own synthetic shipment builders.
+        if (shipmentInfo != null) {
+            return "Shipped";
         }
 
         String fulfillmentStatus = order != null ? order.getFulfillmentStatus() : null;

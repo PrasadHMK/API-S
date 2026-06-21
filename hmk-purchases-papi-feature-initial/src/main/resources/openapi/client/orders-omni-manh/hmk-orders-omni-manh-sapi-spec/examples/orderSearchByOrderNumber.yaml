@@ -34,10 +34,12 @@ orderSearchByOrderNumber:
           trackingNumber: "794633482609"
           trackURL: https://www.fedex.com/fedextrack/?tracknumbers=794633482609&cntry_code=us&language=english
           shippingMethodLabel: FedEx Home
+          deliveryDate: null
           quantity: 2.0
         - shipmentId: WEB-004722175
           shippedDate: 2022-05-04T23:00:02.63
           trackingNumber: "794633483010"
           trackURL: https://www.fedex.com/fedextrack/?tracknumbers=794633483010&cntry_code=us&language=english
           shippingMethodLabel: FedEx Home
+          deliveryDate: null
           quantity: 1.0

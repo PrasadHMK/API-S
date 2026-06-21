@@ -85,6 +85,8 @@ properties:
                 type: string
               shippingMethodLabel:
                 type: string
+              deliveryDate:
+                type: string
               quantity:
                 type: integer
                 format: int32

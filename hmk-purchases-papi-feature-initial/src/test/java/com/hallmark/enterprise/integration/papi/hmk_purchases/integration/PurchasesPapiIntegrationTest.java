@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -209,6 +210,7 @@ class PurchasesPapiIntegrationTest {
         shipment.setQuantity(2);
         shipment.setShippedDate("2026-01-06");
         shipment.setTrackURL("https://ups.com/track/1Z999AA10123456784");
+        shipment.setDeliveryDate("2026-01-11T09:39:18");
         
         List<OrderItemsInnerShipmentsInner> shipments = new ArrayList<>();
         shipments.add(shipment);
@@ -243,7 +245,7 @@ class PurchasesPapiIntegrationTest {
                 .andExpect(jsonPath("$.orders[0].shipToAddressShipments[0].anticipated_arrival_date")
                         .value("01-10-2026"))
                 .andExpect(jsonPath("$.orders[0].shipToAddressShipments[0].actual_delivery_date")
-                        .value("Not Available"))
+                        .value("01-11-2026"))
                 .andExpect(jsonPath("$.orders[0].shipToAddressShipments[0].status")
                         .value("Shipped"));
     }
@@ -358,7 +360,7 @@ class PurchasesPapiIntegrationTest {
     }
 
     @Test
-    @DisplayName("E2E: Delivered shipment maps actual delivery date from order payload")
+    @DisplayName("E2E: Delivered shipment maps actual delivery date from shipment payload")
     void searchByOrderNumber_DeliveredShipment_ReturnsMappedDeliveryFields() throws Exception {
         // Given - Add ship-to-address item
         OrderItemsInner item = new OrderItemsInner();
@@ -369,6 +371,7 @@ class PurchasesPapiIntegrationTest {
         OrderItemsInnerShipmentsInner shipment = new OrderItemsInnerShipmentsInner();
         shipment.setTrackingNumber("TRACK123");
         shipment.setShippingMethodLabel("FEDEX Ground");
+        shipment.setDeliveryDate("2026-01-12T09:39:18");
         shipment.setQuantity(1);
         
         List<OrderItemsInnerShipmentsInner> shipments = new ArrayList<>();
