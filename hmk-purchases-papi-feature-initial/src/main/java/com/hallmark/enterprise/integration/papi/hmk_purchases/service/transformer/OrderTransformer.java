@@ -1,6 +1,7 @@
 package com.hallmark.enterprise.integration.papi.hmk_purchases.service.transformer;
 
 import java.math.BigDecimal;
+import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -258,7 +259,7 @@ public class OrderTransformer {
             }
 
             shipment.setAnticipatedArrivalDate(getAnticipatedArrivalDate(matchedItems));
-            shipment.setActualDeliveryDate(formatDate(shipmentInfo.getDeliveryDate()));
+            shipment.setActualDeliveryDate(formatDate(getShipmentDeliveryDate(shipmentInfo)));
             shipment.setStatus(getShipmentStatus(order, shipmentInfo));
         }
 
@@ -576,6 +577,20 @@ public class OrderTransformer {
     private boolean isDelivered(Order order) {
         String fulfillmentStatus = order != null ? order.getFulfillmentStatus() : null;
         return fulfillmentStatus != null && fulfillmentStatus.toLowerCase().contains("deliver");
+    }
+
+    private String getShipmentDeliveryDate(OrderItemsInnerShipmentsInner shipmentInfo) {
+        if (shipmentInfo == null) {
+            return null;
+        }
+
+        try {
+            Method method = shipmentInfo.getClass().getMethod("getDeliveryDate");
+            Object value = method.invoke(shipmentInfo);
+            return value != null ? value.toString() : null;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**

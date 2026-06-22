@@ -14,6 +14,25 @@ components:
          scopes:
            read: Read access to data
            write: Write access to data
+  schemas:
+    OrderItemsInnerShipmentsInner:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+        shippedDate:
+          type: string
+        trackingNumber:
+          type: string
+        trackURL:
+          type: string
+        shippingMethodLabel:
+          type: string
+        deliveryDate:
+          type: string
+        quantity:
+          type: integer
+          format: int32
 
 security:
   - OAuth2ClientCredentials:

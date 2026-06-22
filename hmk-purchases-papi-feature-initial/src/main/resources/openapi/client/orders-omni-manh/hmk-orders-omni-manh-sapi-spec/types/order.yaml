@@ -73,20 +73,4 @@ properties:
         shipments:
           type: array
           items:
-            type: object
-            properties:
-              shipmentId:
-                type: string
-              shippedDate:
-                type: string
-              trackingNumber:
-                type: string
-              trackURL:
-                type: string
-              shippingMethodLabel:
-                type: string
-              deliveryDate:
-                type: string
-              quantity:
-                type: integer
-                format: int32
+            $ref: '../openapi.yaml#/components/schemas/OrderItemsInnerShipmentsInner'
